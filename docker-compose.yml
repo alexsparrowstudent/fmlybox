@@ -1,0 +1,24 @@
+# SafeDay Self-Hosted Family Server
+# Run on your VDS: docker compose up -d
+version: '3.8'
+
+services:
+  safeday-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: safeday-family-server
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+    volumes:
+      # Persistent storage volume for family database and receipts
+      - safeday_data:/app/data
+
+volumes:
+  safeday_data:
+    name: safeday_family_data

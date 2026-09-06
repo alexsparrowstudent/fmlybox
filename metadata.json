@@ -1,0 +1,11 @@
+{
+  "name": "SafeDay",
+  "description": "Семейный финансовый навигатор с концепцией Safe-to-Spend (Дневной безопасный лимит) и мгновенным вводом трат",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

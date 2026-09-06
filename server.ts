@@ -320,6 +320,21 @@ app.post("/api/reset", (_req, res) => {
   res.json({ status: "reset_complete", data: currentDb });
 });
 
+// 4.1 Download Project Code Archive as ZIP
+app.get("/api/download-zip", (_req, res) => {
+  try {
+    const { execSync } = require("child_process");
+    const zipPath = "/tmp/safeday-project.zip";
+    execSync(`zip -r ${zipPath} . -x "node_modules/*" -x ".git/*" -x "dist/*" -x "tmp/*"`, {
+      cwd: process.cwd(),
+    });
+    res.download(zipPath, "safeday-project.zip");
+  } catch (err: any) {
+    console.error("ZIP download error:", err);
+    res.status(500).json({ error: "Failed to generate ZIP archive", details: err.message });
+  }
+});
+
 // 5. API to parse expense text or voice transcription
 app.post("/api/parse-expense", async (req, res) => {
   try {

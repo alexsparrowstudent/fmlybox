@@ -845,6 +845,18 @@ export const FamilySettingsScreen: React.FC<FamilySettingsScreenProps> = ({
             <span>Таблица Excel (CSV)</span>
           </button>
         </div>
+
+        {/* Download Project Source Code ZIP */}
+        <div className="pt-2 border-t border-white/5">
+          <a
+            href="/api/download-zip"
+            download="safeday-project.zip"
+            className="w-full p-2.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-xs font-bold flex items-center justify-center gap-2 transition cursor-pointer"
+          >
+            <Download className="w-4 h-4 text-amber-400" />
+            <span>Скачать полный исходный код (.ZIP) для VDS</span>
+          </a>
+        </div>
       </div>
 
       {/* Reset Demo Data Button */}
